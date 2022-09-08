@@ -23,34 +23,57 @@ There are two ways to run this project:
 
 ### Run locally
 
-First, checkout the code, and define your credentials in a `.env` file:
+First, checkout the code, and define your credentials in an `.env` file in the directory where you checked out the code:
 
 ```lang=env
 # .env file
 UNIFI_USERNAME=<username> 
 UNIFI_PASSWORD=<password> 
 UNIFI_URL=<your_unifi_controller> 
-# Set the backup location if needed (otehrwise, it's the current directory)
+# Set the backup location if needed (otherwise, it's the current directory)
 # BACKUP_LOCATION=<path for backup files>
 ```
 
 Then, build it as follows:
 
 ```lang=bash
-yarn install && yarn build && yarn node dist/index.js 
+yarn install && yarn build
+```
+
+And, finally, run it with the following command (repeat this every one and then to keep your downloaded backups up to date).
+
+```lang=bash
+yarn node dist/index.js 
 ```
 
 The script will either load the `.env` file or the environment variables from the environment.
 
 ### Docker
 
-To run it with Docker is as easy as follows (I might add support for secrets at some point, at least by mapping one `secrets` file to the `.env` file in the container):
+To run it with Docker is as easy as follows (I might add support for secrets at some point, at least by mapping one `secrets` file to the `.env` file in the container). Don't forget to set the environment variables either directly or via [some `op` wizardry](https://developer.1password.com/docs/cli/secrets-environment-variables) and make sure the mounted `/backup` volume exists.
 
 ```lang=bash
-docker run -e UNIFI_USERNAME=<username> -e UNIFI_PASSWORD=<password> -e UNIFI_URL=<your_unifi_controller> -v ./backups:/backups ghcr.io/johannrichard/unifi-backup/unifi-controller-backup
+docker run \
+   -e UNIFI_USERNAME=<username> \
+   -e UNIFI_PASSWORD=<password> \
+   -e UNIFI_URL=<your_unifi_controller> \
+   -v ~/unifi-backups:/backups \
+   ghcr.io/johannrichard/unifi-backup/unifi-controller-backup
 ```
 
 If successful, the script will download the latest Controller Backup file and store it in the location you mapped to `/backups`.
+
+### Output
+
+The script outputs two things:
+
+- the date of the backup downloaded
+- the (local) path of the download (in the case of the Docker container, this will always be `/backups`, mounted to the local volume of your choice).
+
+```lang=shell
+Downloading latest backup 2022-09-08T22:00:00Z
+Write backup: /backups/autobackup_7.1.66_20220908_2200_1662674400059.unf
+```
 
 ### Caveats
 
@@ -62,4 +85,4 @@ UNIFI_URL=https://my-unifi:8443
 
 ### Credits
 
-Big thanks to `@thib3113` for his wonderful [`unifi-client`](https://github.com/thib3113/unifi-client) `node.js` library. With it, programming this was a breeze. It took me longer to create a proper build system and the Dockerfile than to write the code itself.
+Big thanks to [`@thib3113`](https://github.com/thib3113) for his wonderful [`unifi-client`](https://github.com/thib3113/unifi-client) `node.js` library. With it, programming this was a breeze. It took me longer to create a proper build system and the Dockerfile than to write the code itself.
