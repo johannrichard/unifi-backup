@@ -1,0 +1,30 @@
+{
+  "name": "unifi-backup",
+  "version": "1.0.0",
+  "description": "A simple unifi config backup downloader",
+  "main": "src/index.ts",
+  "packageManager": "yarn@3.2.3",
+  "dependencies": {
+    "@types/debug": "^4.1.7",
+    "@types/node": "^18.7.16",
+    "dotenv": "^16.0.2",
+    "typescript": "^4.8.2",
+    "unifi-client": "^0.9.4",
+    "util": "^0.12.4"
+  },
+  "scripts": {
+    "start": "node dist/index.ts",
+    "op-start": "op run --env-file=./.env -- node dist/index.js",
+    "lint": "eslint src/**.ts --ext .ts",
+    "build": "npx tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "johannrichard",
+  "license": "ISC",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.2.0",
+    "@typescript-eslint/parser": "^5.2.0",
+    "eslint": "^8.1.0",
+    "typescript": "^4.4.4"
+  }
+}
