@@ -8,10 +8,9 @@ This is a little project, built in an evening, that allows you to download the l
 
 Behind every new project there's a story. In this case, a user of a UniFi UDM (not me) managed to completely reset their UniFi Controller during an internet outage. As nobody (including myself) had cared to manually download at least the latest backup, many hours of configuration were lost.
 
-
 Thus the idea to create a simple script to download UniFi Backups was born. And as most solutions proposed invoke SSH access to UDM or require you to hand over UniFi Controller Administrator credentials, I set out to create a solution that could -- eventually -- simply be run as a Docker container.
 
-## Prerequsites on your UniFi Controller
+## Prerequisites on your UniFi Controller
 
 In order for the script to be successful, you must either have or create a user with Administrator rights as only admins can download the Backup files. Furthermore, you have either manual backups or automatic backups configured.
 
