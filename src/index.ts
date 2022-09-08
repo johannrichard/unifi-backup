@@ -1,6 +1,10 @@
 import { Controller, dateISOString, timestampDate } from "unifi-client";
 import * as Fs from "fs";
 import * as Path from "path";
+import * as dotenv from "dotenv";
+
+// Load .env file
+dotenv.config();
 
 interface Backup {
   controller_name: string;
