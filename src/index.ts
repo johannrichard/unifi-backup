@@ -52,7 +52,6 @@ async function main() {
         // console.log(backup);
         const path = Path.resolve(
           process.env.BACKUP_LOCATION || __dirname,
-          "backups",
           lastBackup["filename"]
         );
         const writer = Fs.createWriteStream(path);
