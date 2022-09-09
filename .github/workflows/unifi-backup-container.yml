@@ -9,14 +9,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2 # Checking out the repo
-      - uses: actions/setup-node@v3
-
-      - name: Build project
-        run: npm i -g yarn
-      - run: yarn set version stable
-      - run: yarn install
-      - run: yarn build
-
       - name: Build and Publish latest Docker image
         uses: VaultVulp/gp-docker-action@1.2.0
         with:

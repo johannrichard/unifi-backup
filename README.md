@@ -50,7 +50,7 @@ The script will either load the `.env` file or the environment variables from th
 
 ### Docker
 
-To run it with Docker is as easy as follows (I might add support for secrets at some point, at least by mapping one `secrets` file to the `.env` file in the container). Don't forget to set the environment variables either directly or via [some `op` wizardry](https://developer.1password.com/docs/cli/secrets-environment-variables) and make sure the mounted `/backup` volume exists. 
+To run it with Docker is as easy as follows (I might add support for secrets at some point, at least by mapping one `secrets` file to the `.env` file in the container). Don't forget to set the environment variables either directly or via [some `op` wizardry](https://developer.1password.com/docs/cli/secrets-environment-variables) and make sure the mounted `/backup` volume exists.
 
 As the container will run once, and then stop, adding the `--rm` option might or might not be a good idea. Since I expect you know what you're doing when you attempt to use this, I leave it up to you to decide whats right for you or not.
 
