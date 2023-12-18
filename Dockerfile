@@ -7,7 +7,7 @@ RUN yarn set version stable
 # Copy compiled code
 COPY package.json yarn.lock tsconfig.json ./
 
-RUN yarn install --immutable
+RUN yarn install
 COPY . .
 RUN yarn build
 
