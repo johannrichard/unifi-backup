@@ -59,15 +59,21 @@ async function main() {
           lastBackup["filename"]
         );
         const writer = Fs.createWriteStream(path);
+
+        const backupURL = `/proxy/network/dl/autobackup/${lastBackup["filename"]}`;
         const backupFile = await controller
           .getInstance()
-          .get("/dl/autobackup/:backup", {
-            urlParams: {
-              backup: lastBackup["filename"],
-            },
+          .get(backupURL, {
             responseType: "stream",
           });
 
+       if (backupFile.headers["content-type"] != "application/octet-stream") {
+          console.log(backupURL);
+           console.log(`Wrong response type: ${backupFile.headers["content-type"]}`);
+           console.log(backupFile.status);
+           console.log(backupFile.headers);
+           return;
+       };
         console.log(`Write backup: ${path.toString()}`);
         backupFile.data.pipe(writer);
 
