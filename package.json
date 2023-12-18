@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "description": "A simple unifi config backup downloader",
   "main": "src/index.ts",
-  "packageManager": "yarn@3.2.3",
+  "packageManager": "yarn@4.0.2",
   "dependencies": {
     "@types/debug": "^4.1.7",
     "@types/node": "^18.7.16",
     "dotenv": "^16.0.2",
-    "unifi-client": "^0.9.4",
+    "unifi-client": "^0.11.0",
     "util": "^0.12.4"
   },
   "scripts": {
