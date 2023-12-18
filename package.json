@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A simple unifi config backup downloader",
   "main": "src/index.ts",
-  "packageManager": "yarn@3.2.3",
+  "packageManager": "yarn@4.0.2",
   "dependencies": {
     "@types/debug": "^4.1.7",
     "@types/node": "^18.7.16",
